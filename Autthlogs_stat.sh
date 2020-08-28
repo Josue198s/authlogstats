@@ -12,11 +12,11 @@ echo "Size	Name of the file";
 find . -name 'authlog' | xargs du -h;
 
 #finding this logs with successfull attempts
-find . -name 'authlog.txt' | xargs cat | egrep 'Accepted[[:blank:]]keyboard-interactive/pam[[:blank:]]for | Accepted[[:blank:]]publickey[[:blank:]]for' >> "sample.txt" ;
+find . -name 'authlog' | xargs cat | egrep 'Accepted[[:blank:]]keyboard-interactive/pam[[:blank:]]for | Accepted[[:blank:]]publickey[[:blank:]]for' >> "sample.txt" ;
 cat "sample.txt" >> "sample2.txt"; 
 
 #finding logs with failed attempts
-find . -name 'authlog.txt' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for' | egrep -i -v 'illegal|invalid' >> "sample3.txt" ; 
+find . -name 'authlog' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for' | egrep -i -v 'illegal|invalid' >> "sample3.txt" ; 
 cat "sample3.txt" >> "sample4.txt";
 
 #finding logs with failed attempts by illegal user.
@@ -33,7 +33,7 @@ find . -name 'authlog' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for[
 
 
 #findling logs with Invalid users and grepping dead hours for them.
-find . -name 'authlog.txt' | xargs cat | egrep 'Invalid[[:blank:]]user[[:blank:]]' >> "invalid.txt" ; 
+find . -name 'authlog' | xargs cat | egrep 'Invalid[[:blank:]]user[[:blank:]]' >> "invalid.txt" ; 
 cat "invalid.txt" >> "invalid2.txt"; 
 sed -i -e 's/Binary file (standard input) matches//g' "*.txt";
 
