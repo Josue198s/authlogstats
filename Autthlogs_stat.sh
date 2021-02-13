@@ -23,11 +23,11 @@ cat "sample3.txt" >> "sample4.txt";
 find . -name 'authlog' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal'| egrep -i -v 'Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]ssh|Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]telnet|Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]][[:blank:]]from[[:blank:]]'>> "illegal.txt";
 cat "illegal.txt" >> "illegal2.txt";
 
-#Jul 23 22:16:03 bear sshd[27716]: Failed none for illegal user telnet 172.19.1.20 from 10.22.135.166 port 3003 ssh2
+
 find . -name 'authlog' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]ssh|Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]telnet'| egrep -i -v 'Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]][[:blank:]]from[[:blank:]] && Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]ssh|Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]]telnet[[:blank:]][[a-z][A-Z][0-9]]'>> "illegaluser.txt";
 
 
-#Apr 26 14:35:33 bear sshd[1576]: Failed none for illegal user  from 
+
 #finding users with double space infront of them.
 find . -name 'authlog' | xargs cat | egrep 'Failed[[:blank:]]none[[:blank:]]for[[:blank:]]illegal[[:blank:]]user[[:blank:]][[:blank:]]from[[:blank:]]'>> "illegalfrom.txt";
 
